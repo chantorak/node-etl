@@ -283,9 +283,9 @@ mongocollection.find({})
 
 #### Mongo
 
-<a name="mongoinsert" href="#mongoinsert">#</a> etl.mongo.<b>insert</b>(<i>collection</i> [,<i>options</i>])
+<a name="mongoinsertone" href="#mongoinsertone">#</a> etl.mongo.<b>insertOne</b>(<i>collection</i> [,<i>options</i>])
 
-Inserts incoming data into the provided mongodb collection.  The supplied collection can be a promise on a collection.  The options are passed on to both streamz and the mongodb insert comand.  By default this object doesn't push anything downstream, but it `pushResults` is set as `true` in options, the results from mongo will be pushed downstream.
+Inserts one incoming data into the provided mongodb collection.  The supplied collection can be a promise on a collection.  The options are passed on to both streamz and the mongodb insertOne comand.  By default this object doesn't push anything downstream, but it `pushResults` is set as `true` in options, the results from mongo will be pushed downstream.
 
 Example
 
@@ -301,7 +301,7 @@ var collection = db.then(function(db) {
 etl.file('test.csv')
   .pipe(etl.csv())
   .pipe(etl.collect(10))
-  .pipe(etl.mongo.insert(collection));
+  .pipe(etl.mongo.insertOne(collection));
 
 ```
 
